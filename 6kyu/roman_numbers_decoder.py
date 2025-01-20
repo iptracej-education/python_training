@@ -34,33 +34,28 @@ def solution(roman : str) -> int:
     # Reverse Order 
     letters = list(roman)[::-1]
 
-    '''
-    XV
-    CM
-    MD 
-    '''
+    prev_value = 0
+    current_value = 0
+    
+    final = 0
+    
     for letter in letters:
         if letter in roman_dict:
-            value = roman_dict[letter]
-            next = roman_dict[letter+1]
-            print(value) 
-            
+            current_value = roman_dict[letter]    
+            if current_value >= prev_value:
+               final += current_value
+            else:
+                final -= current_value
         else:
             print("invalid")
+            break
 
-
-
-
-
-    
-    result = 0
-    
-      
-    return result
+        prev_value = current_value       
+    return final
 
 print(solution('MM'))
 print(solution('MDCLXVI'))
-print(solution("MMMCMXCIX"))
+print(solution("MMMDCCCLXXXVIII"))
 
 
 
